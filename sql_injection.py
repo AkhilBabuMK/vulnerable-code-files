@@ -25,8 +25,7 @@ def login():
         username = request.form.get("username")
         password = request.form.get("password")
 
-        # 🚨 VULNERABLE SQL QUERY 🚨
-        query = "SELECT * FROM users WHERE username = ? AND password = ?"
+        # 🚨 VULNERABLE SQL QUERY 🚨        query = f"SELECT * FROM users WHERE username = '{username}' AND password = '{password}'"
         conn = sqlite3.connect("test.db")
         cursor = conn.cursor()
         cursor.execute(query)
